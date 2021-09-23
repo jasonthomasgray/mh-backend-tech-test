@@ -12,9 +12,21 @@ app.get("/investments/:id", (req, res) => {
   request.get(`${config.investmentsServiceUrl}/investments/${id}`, (e, r, investments) => {
     if (e) {
       console.error(e)
-      res.send(500)
+      res.sendStatus(500)
     } else {
       res.send(investments)
+    }
+  })
+})
+
+app.post("/holdings", (req, res) => {
+  request.get(`${config.investmentsServiceUrl}/investments`, (e, r, investments) => {
+    if (e) {
+      console.error(e)
+      res.sendStatus(500)
+    } else {
+      console.log(investments)
+      res.sendStatus(200)
     }
   })
 })
